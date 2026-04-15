@@ -1,4 +1,4 @@
 # Attendance-Monitoring-System
 Attendance Monitoring System - Repo
 
-#16 Checked attendance reports and payroll calculations and related issues.
+#16 Checked attendance reports and payroll calculations and fixed related issues.
