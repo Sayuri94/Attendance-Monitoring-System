@@ -4,6 +4,25 @@ Amila
 #4 Swipe IN button issue sorted. recorded time correctly
 Attendance Monitoring System - Repo
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#16 Checked attendance reports, payroll calculations and fixed issues.
 #13 API response time too long. Fixed. 
 
 
