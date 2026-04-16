@@ -18,9 +18,9 @@ Review for clarity
 Schedule training sessions
 #
 Darshana-
-#
-#
-#
+# 13 - Login connection failure
+# 9 - Retest functionality
+# 3 - Integrate Leave with Payroll
 #
 #
 Thushara-
