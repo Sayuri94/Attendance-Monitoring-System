@@ -33,4 +33,4 @@ API response time too long . Fixed.
 Sayuri-
 Deployment faliure fix # Updated by Sayuri
 Test API access #sayuri
-Verify Reports #sayuri
+Verify reports and payroll integration #sayuri
