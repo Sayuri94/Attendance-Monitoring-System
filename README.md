@@ -22,7 +22,7 @@ Amila-
 Test report functionality
 Swipe time not recorded
 Review for clarity
-#
+Schedule training sessions
 #
 Darshana-
 #
