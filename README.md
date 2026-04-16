@@ -4,34 +4,8 @@ Amila
 #4 Swipe IN button issue sorted. recorded time correctly
 Attendance Monitoring System - Repo
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #16 Checked attendance reports, payroll calculations and fixed issues.
 #13 API response time too long. Fixed. 
-
-
-
-
-
-
-
-
 
 Create manager settings UI #15
 Configure alert preferences done
@@ -57,7 +31,7 @@ API response time too long . Fixed.
 #
 #
 Sayuri-
-#
+Deployment faliure fix # Updated by Sayuri
 #
 #
 #
