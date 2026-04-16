@@ -20,7 +20,7 @@ Configure alert preferences done
 Attendance Monitoring System - Repo
 Amila-
 Test report functionality
-#
+Swipe time not recorded
 #
 #
 #
