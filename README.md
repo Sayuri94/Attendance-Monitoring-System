@@ -24,8 +24,8 @@ Darshana-
 #
 #
 Thushara-
-#
-#
+Handle sync conflicts
+API performance
 ##13 API performance 
 API response time too long . Fixed.
 #
