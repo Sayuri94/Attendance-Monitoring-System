@@ -15,7 +15,7 @@ Amila-
 Test report functionality
 Swipe time not recorded
 Review for clarity
-Schedule training sessions
+Schedule training sessions.
 #
 Darshana-
 # 13 - Login connection failure
