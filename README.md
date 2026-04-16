@@ -21,7 +21,7 @@ Attendance Monitoring System - Repo
 Amila-
 Test report functionality
 Swipe time not recorded
-#
+Review for clarity
 #
 #
 Darshana-
