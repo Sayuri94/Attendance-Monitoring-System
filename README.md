@@ -19,7 +19,7 @@ Amila-
 #
 Darshana-
 # 13 - Login connection failure
-#
+# 9 - Retest functionality
 #
 #
 #
