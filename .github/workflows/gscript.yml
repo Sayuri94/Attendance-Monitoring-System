@@ -1,0 +1,76 @@
+name: Label & comment issues
+
+on:
+  issues:
+    types:
+      - reopened
+      - opened
+      - closed        # Added: triggers when an issue is closed
+  pull_request:
+    types:
+      - opened        # Added: triggers when a pull request is opened
+
+jobs:
+  label_issues:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Attach label to issues
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ["issue", "fix"]
+            })
+
+      - name: Comment on new issue
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Thanks for opening this issue! We'll take a look as soon as possible.
+
+      # Comment when an issue is closed
+      - name: Comment on closed issue
+        if: github.event.action == 'closed'
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            The issue is now resolved.
+
+  # Comment when a user opens their first pull request
+  greet_first_pr:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    if: github.event_name == 'pull_request' && github.event.action == 'opened'
+    steps:
+      - name: Check if first pull request and congratulate
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const creator = context.payload.sender.login;
+
+            // Count how many PRs this user has made in this repo
+            const { data: pullRequests } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'all'
+            });
+
+            const userPRs = pullRequests.filter(pr => pr.user.login === creator);
+
+            // If this is their first PR, post a congratulatory message
+            if (userPRs.length === 1) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.pull_request.number,
+                body: `🎉 Congratulations @${creator}! This is your first pull request in this repository. Great work — welcome to the team!`
+              });
+            }
