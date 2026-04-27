@@ -17,9 +17,9 @@ permissions:
 jobs:
   label_issues:
     runs-on: ubuntu-latest
+    if: github.event_name == 'issues'
     steps:
       - name: Attach label to issues
-        if: github.event_name == 'issues'
         uses: actions/github-script@v6
         with:
           script: |
@@ -32,19 +32,27 @@ jobs:
 
       - name: Comment on new issue
         if: github.event.action == 'opened' || github.event.action == 'reopened'
-        uses: peter-evans/create-or-update-comment@v1
+        uses: actions/github-script@v6
         with:
-          issue-number: ${{ github.event.issue.number }}
-          body: |
-            Thanks for opening this issue! We'll take a look as soon as possible.
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Thanks for opening this issue! We will take a look as soon as possible.'
+            })
 
       - name: Comment on closed issue
         if: github.event.action == 'closed'
-        uses: peter-evans/create-or-update-comment@v1
+        uses: actions/github-script@v6
         with:
-          issue-number: ${{ github.event.issue.number }}
-          body: |
-            The issue is now resolved.
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'The issue is now resolved.'
+            })
 
   greet_first_pr:
     runs-on: ubuntu-latest
@@ -69,6 +77,6 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: context.payload.pull_request.number,
-                body: `🎉 Congratulations @${creator}! This is your first pull request in this repository. Great work — welcome to the team!`
+                body: `Congratulations @${creator}! This is your first pull request in this repository. Great work — welcome to the team!`
               });
             }
